@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timeline</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .gujilde{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.50),rgba(0,0,0,0.50)),url(1425454.jpg);
+    background-size: cover;
+    background-position: center;
+      }
+      .kiane{
+    width: 90%;
+    margin: auto;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15%;
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+}
+.logo{
+    width: 100px;
+    cursor: pointer;
+}
+.kiane ul li{
+    font-family: bold;
+    list-style: none;
+    display: inline-block;
+    margin: 0 15px;
+    position: relative;
+}
+.kiane ul li a{ 
+    text-decoration: none;
+    color : #fff;
+    text-transform: uppercase;
+}
+.kiane ul li a:hover{
+    color: yellow;
+}
+.kiane ul li a::after{
+    content: '';
+    display: 10px;
+    width: 100%;
+    background : yellow;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transiton: 0.5s;
+}
+.kiane ul li a:hover::after{
+    width: 100%;
+      }
+      .title h1{
+        margin-top: 1px;
+        text-align: center;
+        color: #fff;
+        font-style: italic;
+      }
+      .chartCard {
+        width: 100vw;
+        height: calc(80vh - 40px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .chartBox {
+        width: 700px;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(255, 206, 86, 11);
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gujilde">
+    <nav>
+          <div class="kiane">         
+               <img src ="logo1.png" class="logo">
+              <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="detail1.html">Details</a></li> 
+                  <li><a href="patent.html">Patent</a></li>
+                  <li><a href="problems and solutions.html">Problems and Solution</a></li>
+                  <li><a href="timeline.html">Timeline</a></li>
+                  <li><a href="userlevel.html">User Acceptable Level</a></li>
+                  <li><a href="me.html">About the Creator</a></li>
+               </ul>
+          </div>
+       </nav>
+       <br>
+       <div class="title">
+       <h1>Timeline</h1>
+    <div class="chartCard">
+      <div class="chartBox">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+  </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    // setup 
+    const data = {
+      labels: ['Draft', 'Cover Page', 'Details Page', 'Patent Page', 'Timeline Page', 'Problem and Solution Page', 'User Acceptable Level Page', 'About the Creator Page','Video Presentation'],
+      datasets: [{
+        label: 'Finished',
+        data: [
+        ['Nov 19 - Nov 19'],
+        ['Nov 20 - Nov 28'],
+        ['Nov 29 - Dec 05'],
+        ['Dec 07 - Dec 07'],
+        ['Dec 05 - Dec 9'],
+        ['Dec 10 - Dec 12'],
+        ['Dec 14 - Dec 15'],
+        ['Dec 15 - Dec 15'],
+        ['Dec 16 - Dec 16'],
+        ],
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        borderColor: 'rgba(0, 0, 0, 1)',
+        borderWidth: 1,
+        borderSkipped: false,
+      }]
+    };
+
+    // config 
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        plugins: {
+          tooltip: {
+            enabled: false
+          }
+        },
+        indexAxis: 'y',
+        scales: {
+          x: {
+            offset: false,
+            min: 'Nov 19',
+            position: 'top',
+            type: 'time',
+            time: {
+              unit: 'month'
+            },
+            ticks: {
+              align: 'start'
+            },
+            grid: {
+              borderDash: [5, 5]
+            }
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    };
+
+    // render init block
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+    </script>
+  </body>
+</html>
